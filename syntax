@@ -1,0 +1,196 @@
+trait Any
+ {
+    this: Self //everything inherits from Any. The only property is void* this
+ }
+
+trait<VAOContainer> Renderable
+{
+    var FBO: Int = 0
+    var VAO: Int = 0
+
+    open fn printSelf()         //This is where a vtable comes into play. Objects AND traits can override this
+    {
+        println(Self::name, VAO, FBO)
+        when this {
+            is Mesh2D {
+
+            }
+        }
+    }
+}
+
+//struct trRenderable { int FBO; int VAO; }
+
+object Mesh2D: Renderable
+{
+    static object
+    {
+
+    }
+
+    renderer: Renderer()
+    public children: Array<Mesh2D>
+
+    lateinit var parent: Mesh2D
+    var children: Mesh2D[] = {}
+
+
+
+    constructor(parent: Mesh2D)
+    {
+
+    }
+
+    object Mesh3D
+    {
+
+    }
+}
+
+object Mesh3D: Renderable
+{
+    ...
+}
+/*
+struct Mesh2D {
+    Mesh2D* parent;
+}
+*/
+
+
+fn printRenderable(r: Renderable)
+{
+    print(r)
+}
+
+//Callsite:
+/*
+trRenderable tmp0;
+tmp0 = { 0, 1, &tmp0};
+printRenderable(&tmp0);
+*/
+//void printRenderable(struct trRenderable* r)
+
+
+
+inline object PhoneNumber(var value: String)
+
+
+fn ProcessFile(fileName: String)
+{
+    var stackString:: imm String = "Hello"
+    var heapString: String? =
+}
+
+
+fn readFile(imm f: File)
+{
+    f.getCharStream(1, 5, 0)
+}
+
+
+var fnType: (Int, Int -> Int, Int)
+val unseatable: Any
+
+fn println(..a: Any){
+
+}
+
+open trait Vector {
+    open val m: float = 0
+        get() = 0
+
+    impl private fn remove()
+
+}
+
+trait Vector2: Vector {
+    var x, y: float = 0, 0
+    override val m: float
+        get() = (x^2 + y^2).sqrt
+
+    operator fn cast() Vec3 { //this will automatically load common properties into v plus its self-reference if rtype is a trait.
+        val r: Vec3 = this -> Vec3(0,0,0)
+        ret r
+    }
+
+    operator fn cast() float =
+
+}
+
+
+
+trait Vector3: Vector2 {
+    var z: float = 0
+    override val m: float
+        get() = (x^2 + y^2 + z^2).sqrt
+}
+
+//traits are justified so that passing between functions does not have to become a vtable for indexes.
+//if you store trait of Vector2, you CANNOT upcast to Vector3.
+
+
+//valueA -> typeA|valueB will instantiate and/or transfer common properties to the created/given instance.
+//if valueA is a trait, it will also load the self-reference to valueB if it is also of trait.
+
+
+
+val a: Vec2 = Vec2(0,0)
+val b: Vec3 = Vec3(1,1,0)
+val c: Vec3 = a -> b // Vec3(0,0,0)
+val d: Vec2 = b -> a // Vec2(1,1)
+
+val aPrime: Vector3 = a->Vector3 //Vector3 {0, 0, 0}
+//to get aPrime back, you must use a type-check
+if aPrime is Vec2 {
+    aPrime as Vec2
+}
+
+//Maybe just make it where you can only use -> for value -> value, not type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
